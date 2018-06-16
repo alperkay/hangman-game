@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import HangmanContainer from './components/HangmanContainer';
+import MainPageContainer from './components/MainPageContainer';
+import {Route} from 'react-router';
 
 class App extends Component {
   render() {
@@ -6,8 +9,10 @@ class App extends Component {
       <div className="App">
         <header className="App-header">
         </header>
-        <h1>Welcome to the Hangman Game!</h1>
-        <h2>Start playing!</h2>
+        <div>
+            <Route exact path="/" component={MainPageContainer}/>
+            <Route exact path="/hangman" component={HangmanContainer}/>
+        </div>
       </div>
     );
   }
