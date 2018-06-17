@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { newGame, makeGuess } from '../actions/game'
 import VisualComponent from './VisualComponent'
 import InputFormComponent from './InputFormComponent'
-import {showGuess , wrongGuessCount, isWinner} from '../lib/game'
+import {showGuess , wrongGuessCount} from '../lib/game'
 
 class GameMainContainer extends PureComponent {
 
@@ -15,12 +15,14 @@ class GameMainContainer extends PureComponent {
     this.props.newGame()
   }
 
-
   render() {
     return (
         <div>
           <VisualComponent
-            word={this.word} //can't manage to run showGuess here
+            //can't manage to run showGuess here,
+            //so rest of the game logic which requires showGuess
+            //couldn't be implemented
+            word= {this.props.word}
             restart={this.handleClick}
             guesses={6-wrongGuessCount(this.props.word,this.props.guess)}
           />
@@ -34,9 +36,7 @@ class GameMainContainer extends PureComponent {
 
 const mapStateToProps = (state) => {
   return {
-    word: state.newGame.word,
-    hidden: state.newGame.hidden,
-    guesses: state.newGame.guesses,
+    word: state.newGame,
     guess: state.makeGuess
   }
 }

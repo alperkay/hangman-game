@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import GameMainContainer from './components/GameMainContainer';
-import MainPageContainer from './components/MainPageContainer';
+import IndexPageContainer from './components/IndexPageContainer';
 import {Route} from 'react-router';
 
 class App extends Component {
@@ -10,7 +10,7 @@ class App extends Component {
         <header className="App-header">
         </header>
         <div>
-            <Route exact path="/" component={MainPageContainer}/>
+            <Route exact path="/" component={IndexPageContainer}/>
             <Route exact path="/hangman" component={GameMainContainer}/>
         </div>
       </div>
