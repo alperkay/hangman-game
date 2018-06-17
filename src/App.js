@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import HangmanContainer from './components/HangmanContainer';
+import LogicContainer from './components/LogicContainer';
 import MainPageContainer from './components/MainPageContainer';
 import {Route} from 'react-router';
 
@@ -11,7 +11,7 @@ class App extends Component {
         </header>
         <div>
             <Route exact path="/" component={MainPageContainer}/>
-            <Route exact path="/hangman" component={HangmanContainer}/>
+            <Route exact path="/hangman" component={LogicContainer}/>
         </div>
       </div>
     );

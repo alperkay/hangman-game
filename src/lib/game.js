@@ -1,23 +1,24 @@
+//if guessed letter is included in the word, show it inside the word string
 export const showGuess = (word, guesses) => {
   return word.split('').map(letter => (guesses.indexOf(letter) < 0) ? "_" : letter).join(" ");
 }
-
+//count the wrong guesses
 export const wrongGuessCount = (word, guesses) => {
   return guesses.filter(guess => word.indexOf(guess) < 0).length
 }
-
+//limit wrong guesses with 6
 export const wrongGuessLimit = (word, guesses) => {
   return guesses.filter(guess => word.indexOf(guess) < 0).length >= 6
 }
-
+//wins if guesses are correct
 export const isWinner = (word, guesses) => {
   return showGuess(word, guesses) === word.split('').join(' ')
 }
-
+//game finishes if wrong guesses reach 6 or if player wins
 export const gameFinished = (word, guesses) => {
   return (wrongGuessLimit(word, guesses) || isWinner(word, guesses))
 }
-
+//word database
 export const wordList = [
   // Borrowed from xkcd password generator which borrowed it from wherever
   "ability","able","aboard","about","above","accept","accident","according",
@@ -265,7 +266,7 @@ export const wordList = [
   "year","yellow","yes","yesterday","yet","you","young","younger",
   "your","yourself","youth","zero","zebra","zipper","zoo","zulu"
 ];
-
+//random word picker
 export const randomWord = () => {
   return wordList[Math.floor(Math.random() * wordList.length)]
 }
