@@ -1,25 +1,22 @@
-import {showGuess} from '../lib/game'
-import { randomWord, wrongGuessCount } from '../lib/game'
+import {showGuess, randomWord} from '../lib/game'
 
 export const NEW_GAME = 'NEW_GAME'
 export const MAKE_GUESS = 'MAKE_GUESS'
 
-export function newGame(word,guesses,wrongGuessCount) {
+export function newGame() {
+  const word = randomWord()
   return {
     type: NEW_GAME,
     payload: {
-      word: randomWord(),
-      guesses: [],
-      wrongGuessCount: 0
+      word: word
     }
   }
 }
 
 export function makeGuess(guess) {
+
   return {
     type: MAKE_GUESS,
-    payload: {
-      guess
-    }
+    payload: guess
   }
 }

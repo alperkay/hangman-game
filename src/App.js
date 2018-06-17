@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import LogicContainer from './components/LogicContainer';
+import GameMainContainer from './components/GameMainContainer';
 import MainPageContainer from './components/MainPageContainer';
 import {Route} from 'react-router';
 
@@ -11,7 +11,7 @@ class App extends Component {
         </header>
         <div>
             <Route exact path="/" component={MainPageContainer}/>
-            <Route exact path="/hangman" component={LogicContainer}/>
+            <Route exact path="/hangman" component={GameMainContainer}/>
         </div>
       </div>
     );

@@ -1,9 +1,7 @@
 import { NEW_GAME } from '../actions/game'
 
 
-export const initialState = {}
-
-const reducer = (state = initialState, action= {}) => {
+const reducer = (state = [], action= {}) => {
   switch (action.type) {
     case NEW_GAME:
       return action.payload;
