@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { newGame, makeGuess } from '../actions/game'
 import VisualComponent from './VisualComponent'
 import InputFormComponent from './InputFormComponent'
-import {showGuess , wrongGuessCount} from '../lib/game'
+import {showGuess , wrongGuessCount, wrongGuessLimit, gameFinished, isWinner} from '../lib/game'
 
 class GameMainContainer extends PureComponent {
 
@@ -16,25 +16,39 @@ class GameMainContainer extends PureComponent {
   }
 
   render() {
+    let result;
+    let gameovermessage;
+    let gameplay;
+    if (wrongGuessLimit(this.props.word,this.props.guess)) {
+      result="YOU LOST!"}
+    if (isWinner(this.props.word,this.props.guess)) {
+      result="YOU WIN!"
+    }
+    if (gameFinished(this.props.word,this.props.guess)) {
+      gameovermessage="GAME OVER"
+      gameplay=<div><VisualComponent word={this.props.word} restart={this.handleClick}/></div>} else {
+        gameplay=
+          <div>
+            <VisualComponent
+              word= {showGuess(this.props.word,this.props.guess)}
+              restart={this.handleClick}
+              guesses={6-wrongGuessCount(this.props.word,this.props.guess)}
+            />
+            <InputFormComponent/>
+          </div>
+      }
     return (
         <div>
-          <VisualComponent
-            //can't manage to run showGuess here,
-            //so rest of the game logic which requires showGuess
-            //couldn't be implemented
-            word= {this.props.word}
-            restart={this.handleClick}
-            guesses={6-wrongGuessCount(this.props.word,this.props.guess)}
-          />
+          {gameplay}
           <p></p>
-          <InputFormComponent/>
+          <div><b>{result} {gameovermessage}</b></div>
         </div>
-
     )
   }
 }
 
 const mapStateToProps = (state) => {
+  console.log(state)
   return {
     word: state.newGame,
     guess: state.makeGuess
