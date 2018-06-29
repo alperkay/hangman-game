@@ -19,6 +19,7 @@ class GameMainContainer extends PureComponent {
     let result;
     let gameovermessage;
     let gameplay;
+    let guesses = this.props.guess.map(letter => letter+", ")
     if (wrongGuessLimit(this.props.word,this.props.guess)) {
       result="YOU LOST!"}
     if (isWinner(this.props.word,this.props.guess)) {
@@ -34,6 +35,7 @@ class GameMainContainer extends PureComponent {
               restart={this.handleClick}
               guesses={6-wrongGuessCount(this.props.word,this.props.guess)}
             />
+            <p><b>Your guesses: </b>{guesses}</p>
             <InputFormComponent/>
           </div>
       }

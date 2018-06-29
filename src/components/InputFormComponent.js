@@ -13,7 +13,8 @@ export class InputFormComponent extends PureComponent {
   render() {
     return (
       <div className='Input'>
-        <b>Make a guess(no need to press enter): </b><input
+        <b>Make a guess(no need to press enter): </b>
+        <input
           type ='text'
           onChange={this.handleChange}
           autoFocus
