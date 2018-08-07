@@ -5,7 +5,7 @@ const reducer = (state = [], action= {}) => {
     case NEW_GAME:
       return []
     case MAKE_GUESS:
-      if (state.includes(action.payload)) {return state} else {return [...state,action.payload]};
+      if (state.includes(action.payload)) {return state} else if (action.payload===" ") {return state} else {return [...state,action.payload]};
     default:
       return state;
   }

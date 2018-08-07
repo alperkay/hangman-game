@@ -6,8 +6,9 @@ export class InputFormComponent extends PureComponent {
 
   handleChange = (e) => {
     let lower = e.target.value.toLowerCase()
-    this.props.makeGuess(lower)
     if (e.target.value.length===1) e.target.value=''
+    this.props.makeGuess(lower)  
+    console.clear()
   }
 
   render() {
